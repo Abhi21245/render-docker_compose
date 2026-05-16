@@ -19,6 +19,8 @@ services:
         value: "8000"
       - key: CORS_ORIGIN
         value: "https://x-frontend-prod.onrender.com"
+      - key: VITE_API_URL
+        value: "https://x-backend-prod.onrender.com"
       - key: ACCESS_TOKEN_EXPIRY
         sync: false
       - key: ACCESS_TOKEN_SECRET
