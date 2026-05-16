@@ -4,7 +4,7 @@ services:
     name: x-frontend-prod
     runtime: image
     image:
-      url: docker.io/harsh0031/frontend-image:latest # Put it under url:
+      url: docker.io/harsh0031/frontend-image:v1 # Put it under url:
     plan: free
 
   # 2. Backend Web Service
