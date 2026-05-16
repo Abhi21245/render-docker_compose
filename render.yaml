@@ -1,0 +1,47 @@
+services:
+  # 1. Frontend Web Service
+  - type: web
+    name: x-frontend-prod
+    runtime: image
+    image: docker.io/harsh0031/frontend-image:latest # Specify your image tag
+    plan: free
+
+  # 2. Backend Web Service
+  - type: web
+    name: x-backend-prod
+    runtime: image
+    image: docker.io/harsh0031/backend-image:latest
+    plan: free
+    envVars:
+      # Render automatically maps external traffic to this port
+      - key: PORT
+        value: "8000"
+      
+      # Set this to your frontend's Render URL after deployment
+      - key: CORS_ORIGIN
+        value: "https://x-frontend-prod.onrender.com"
+
+      # Secrets: Using 'sync: false' means Render will safely prompt 
+      # you to type these values into the dashboard instead of committing them to Git.
+      - key: ACCESS_TOKEN_EXPIRY
+        sync: false
+      - key: ACCESS_TOKEN_SECRET
+        sync: false
+      - key: BREVO_SECRET_KEY
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: MONGODB_URL
+        sync: false
+      - key: REFRESH_TOKEN_EXPIRY
+        sync: false
+      - key: REFRESH_TOKEN_SECRET
+        sync: false
